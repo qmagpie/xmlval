@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<iXCommand Name="SetLogonInfo">
+	<iXPareter Name="Server">qltm</iXPareter>
+	<iXParameter Name="User">pcc</iXParameter>
+	<iXParameter Name="Password">media</iXParameter>
+</iXCommand>

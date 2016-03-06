@@ -1,0 +1,17 @@
+{
+  "name": "xmlval",
+  "version": "1.0.0",
+  "description": "XML/XSD Validation",
+  "main": "xmlval.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Magpie Road Software",
+  "license": "ISC",
+  "devDependencies": {},
+  "dependencies": {
+    "commander": "^2.9.0",
+    "libxml-xsd": "^0.5.2",
+    "underscore": "^1.8.3"
+  }
+}
