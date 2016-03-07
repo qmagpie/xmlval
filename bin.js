@@ -7,7 +7,7 @@ var program = require('commander');
 var args = process.argv;
 if (args.length < 3) { args.push('--help'); }
 
-console.log('xml/xsd validator by rpx');
+console.log('xml/xsd validator by qmagpie');
 program
   .version('0.0.1')
   .arguments('<xml-file> <xsd-file>')
