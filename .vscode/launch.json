@@ -6,7 +6,7 @@
 			"type": "node",
 			"request": "launch",
 			// "program": "${workspaceRoot}/bin.js",
-			"program": "${workspaceRoot}/test/basic.js",
+			"program": "${workspaceRoot}/test/cl.js",
 			"stopOnEntry": false,
 			// "args": ["CommandSampleBad.xml", "Command.xsd"],
 			"args": [],
