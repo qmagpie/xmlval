@@ -9,18 +9,18 @@ if (args.length < 3) { args.push('--help'); }
 
 console.log('xml/xsd validator by qmagpie');
 program
-  .version('0.0.1')
-  .arguments('<xml-file> <xsd-file>')
-  .action(function onCommanderAction(xmlFile, xsdFile) {
-    console.log('validating: ' + xmlFile + ' against: ' + xsdFile);
-    xmlvalidate(xmlFile, xsdFile, function onValidateFile(err) {
-      if (err) {
-        console.error('not valid');
-        console.error(util.inspect(err, { showHidden: false, depth: null, colors: true }));
-        process.exit(0);
-      }
-      console.log('valid!');
-      process.exit(1);
-    });
-  })
-  .parse(args);
+    .version('0.0.1')
+    .arguments('<xml-file> <xsd-file>')
+    .action(function onCommanderAction(xmlFile, xsdFile) {
+        console.log('validating: ' + xmlFile + ' against: ' + xsdFile);
+        xmlvalidate(xmlFile, xsdFile, function onValidateFile(err) {
+            if (err) {
+                console.error('not valid');
+                console.error(util.inspect(err, { showHidden: false, depth: null, colors: true }));
+                process.exit(0);
+            }
+            console.log('valid!');
+            process.exit(1);
+        });
+    })
+    .parse(args);
