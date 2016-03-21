@@ -13,6 +13,7 @@
     "tap": "^5.7.0"
   },
   "dependencies": {
+    "after": "^0.8.1",
     "commander": "^2.9.0",
     "libxml-xsd": "^0.5.2",
     "underscore": "^1.8.3"

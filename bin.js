@@ -18,6 +18,7 @@ program
                 console.error('not valid');
                 console.error(util.inspect(err, { showHidden: false, depth: null, colors: true }));
                 process.exit(0);
+                return;
             }
             console.log('valid!');
             process.exit(1);
