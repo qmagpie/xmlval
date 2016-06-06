@@ -1,16 +1,16 @@
 {
   "name": "xmlval",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "XML/XSD Validation",
   "main": "xmlval.js",
   "scripts": {
-    "test": "tap test/*.js"
+    "test": "tap test/test-*.js"
   },
   "bin": "./bin.js",
   "author": "Magpie Road Software",
   "license": "ISC",
   "devDependencies": {
-    "tap": "^5.7.0"
+    "tap": "^5.7.1"
   },
   "dependencies": {
     "after": "^0.8.1",
