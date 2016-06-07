@@ -1,34 +1,35 @@
 var fs = require('fs');
 var xsd = require('libxml-xsd');
+var after = require('after');
 
 module.exports = validateFile;
 
 function validateFile(xmlFPath, xsdFPath, cb) {
-<<<<<<< HEAD
+    var next = after(2, validate);
+    var results = {};
+    
     // console.time('xml validation');
-=======
-    //console.time('xml validation');
->>>>>>> 620ca443344343f95e4920be2cd8909a32e76ba9
     fs.readFile(xmlFPath, 'utf8', function onXmlFileRead(err, xmlString) {
-        if (err) { return cb(err); }
-        parseXsdAndValidateString(xmlString, xsdFPath, cb);
+        if (err) { return next(err); }
+        results.xmlString = xmlString;
+        next(null, results);
     });
-}
-
-function parseXsdAndValidateString(xmlString, xsdFile, cb) {
-    xsd.parseFile(xsdFile, function onXsdParsed(err, schema){
-        if (err) { return cb(err); }
-        validateString(xmlString, schema, cb);
+    
+    xsd.parseFile(xsdFPath, function onXsdParsed(err, schema){
+        if (err) { return next(err); }
+        results.schema = schema; 
+        next(null, results);
     });
+    
+    function validate(err, results) {
+        if (err) { return cb(err); }
+        validateString(results.xmlString, results.schema, cb);
+    }
 }
 
 function validateString(xmlString, schema, cb) {
     schema.validate(xmlString, function onSchemaValidated(err, validationErrors){
-<<<<<<< HEAD
         // console.timeEnd('xml validation');
-=======
-        //console.timeEnd('xml validation');
->>>>>>> 620ca443344343f95e4920be2cd8909a32e76ba9
         if (err) { return cb(err); }
         if (validationErrors) { return cb(validationErrors); }
         cb();

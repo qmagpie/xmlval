@@ -4,7 +4,7 @@ var spawn = require('child_process').spawn;
 var node = process.execPath;
 
 
-var EXEJS = './bin.js';
+var EXEJS = './xmlval.js';
 var SCHEMA = __dirname + '/' + 'Command.xsd';
 var SAMPLE_OK = __dirname + '/' + 'CommandSample.xml';
 var SAMPLE_BAD = __dirname + '/' + 'CommandSampleBad.xml';
@@ -18,7 +18,7 @@ t.test('check files', function (t) {
 
 testSpawnedOutput(t, 'cl no params', [EXEJS], function(code, outLines, t) {
     t.isEqual(code, 0);
-    t.isEqual(outLines[2], '  Usage: bin [options] <xml-file> <xsd-file>');
+    t.isEqual(outLines[2], '  Usage: xmlval [options] <xml-file> <xsd-file>');
     t.end();
 });
 
