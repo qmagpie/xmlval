@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+'use strict';
+
 var xmlvalidate = require('./');
 // var xmlvalidate = require('./index.after');
 // var xmlvalidate = require('./index.curried');

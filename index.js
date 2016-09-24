@@ -1,3 +1,5 @@
+'use strict';
+
 var fs = require('fs');
 var xsd = require('libxml-xsd');
 
