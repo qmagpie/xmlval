@@ -1,4 +1,5 @@
 {
     "jshint.enable": true,
+    "standard.enable": false,
     "editor.renderWhitespace": true
 }

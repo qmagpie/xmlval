@@ -10,10 +10,10 @@
   "author": "Magpie Road Software",
   "license": "ISC",
   "devDependencies": {
-    "tap": "^5.7.1"
+    "tap": "^7.1.2"
   },
   "dependencies": {
-    "after": "^0.8.1",
+    "after": "^0.8.2",
     "commander": "^2.9.0",
     "libxml-xsd": "^0.5.2",
     "underscore": "^1.8.3"

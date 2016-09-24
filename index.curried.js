@@ -4,21 +4,22 @@ var _ = require('underscore');
 
 module.exports = validateFile;
 
-
 function validateFile(xmlFPath, xsdFPath, cb) {
-    fs.readFile(xmlFPath, 'utf8',  _.partial(parseXsdAndValidateString, _, _, xsdFPath, cb));
+    fs.readFile(xmlFPath, 'utf8',  _.partial(cbReadFile, _, _, xsdFPath, cb));
 }
 
-function parseXsdAndValidateString(err, xmlString, xsdFile, cb) {
+function cbReadFile(err, xmlString, xsdFile, cb) {
     if (err) { return cb(err); }
-    xsd.parseFile(xsdFile,  _.partial(validateString, _, _, xmlString, cb));
+    xsd.parseFile(xsdFile,  _.partial(cbParseFile, _, _, xmlString, cb));
 }
 
-function validateString(err, schema, xmlString, cb) {
+function cbParseFile(err, schema, xmlString, cb) {
+    if (err) { return cb(err); }
+    schema.validate(xmlString, _.partial(cbValidate, _, _, cb));
+}
+
+function cbValidate(err, validationErrors, cb){
     if (err) { return cb(err); } 
-    schema.validate(xmlString, function onSchemaValidated(err, validationErrors){
-        if (err) { return cb(err); } 
-        if (validationErrors) { return cb(validationErrors); }
-        cb();
-    });  
+    if (validationErrors) { return cb(validationErrors); }
+    cb();
 }

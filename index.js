@@ -4,25 +4,21 @@ var xsd = require('libxml-xsd');
 module.exports = validateFile;
 
 function validateFile(xmlFPath, xsdFPath, cb) {
-    // console.time('xml validation');
-    fs.readFile(xmlFPath, 'utf8', function onXmlFileRead(err, xmlString) {
-        if (err) { return cb(err); }
-        parseXsdAndValidateString(xmlString, xsdFPath, cb);
-    });
-}
+    fs.readFile(xmlFPath, 'utf8', cbReadFile);
 
-function parseXsdAndValidateString(xmlString, xsdFile, cb) {
-    xsd.parseFile(xsdFile, function onXsdParsed(err, schema){
+    function cbReadFile(err, xmlString) {
         if (err) { return cb(err); }
-        validateString(xmlString, schema, cb);
-    });
-}
+        xsd.parseFile(xsdFPath, (err, schema) => cbParseFile(err, schema, xmlString));
+    }
 
-function validateString(xmlString, schema, cb) {
-    schema.validate(xmlString, function onSchemaValidated(err, validationErrors){
-        // console.timeEnd('xml validation');
+    function cbParseFile(err, schema, xmlString) {
+        if (err) { return cb(err); }
+        schema.validate(xmlString, cbValidate);  
+    }
+
+    function cbValidate(err, validationErrors) {
         if (err) { return cb(err); }
         if (validationErrors) { return cb(validationErrors); }
         cb();
-    });  
+    } 
 }
